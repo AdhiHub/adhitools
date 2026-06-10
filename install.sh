@@ -111,20 +111,21 @@ install_tool() {
     # Check/install deps
     if ! command -v git &>/dev/null; then
         echo -e "${Y}[*] Installing git...${RESET}"
-        $SUDO apt-get install -y git &>/dev/null || $SUDO pacman -S --noconfirm git &>/dev/null || true
+        $SUDO apt-get install -y git 2>&1 || $SUDO pacman -S --noconfirm git 2>&1 || true
     fi
 
-    # Clone or update
+    # Clean previous clone if exists
     if [ -d "$dir" ]; then
         echo -e "${Y}[~] Updating $name...${RESET}"
-        cd "$dir" && git pull --ff-only 2>/dev/null || true
+        cd "$dir" && $SUDO git pull --ff-only 2>&1 || true
     else
         echo -e "${C}[*] Cloning $name...${RESET}"
-        git clone --depth 1 "$url" "$dir" 2>/dev/null || {
+        $SUDO git clone --depth 1 "$url" "$dir" 2>&1 || {
             echo -e "${R}[✘] Failed to clone $name${RESET}"
             return 1
         }
     fi
+    $SUDO chmod -R 755 "$dir" 2>/dev/null || true
 
     # Run tool-specific installer
     local installed=false
@@ -133,11 +134,11 @@ install_tool() {
     if [ -f "$dir/install.sh" ]; then
         echo -e "${C}[*] Running installer for $name...${RESET}"
         cd "$dir"
-        bash install.sh 2>/dev/null && installed=true
+        bash install.sh 2>&1 && installed=true
     elif [ -f "$dir/install.py" ]; then
         echo -e "${C}[*] Running installer for $name...${RESET}"
         cd "$dir"
-        $SUDO python3 install.py 2>/dev/null && installed=true
+        $SUDO python3 install.py 2>&1 && installed=true
     else
         # Just create symlink to the script
         local script=""
