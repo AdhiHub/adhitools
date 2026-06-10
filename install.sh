@@ -2,7 +2,7 @@
 #
 # ╔══════════════════════════════════════════════════════╗
 # ║       ADHITOOLS — All-in-One Installer v1.0         ║
-# ║     Cyber Pentools + 9 Advanced Hacking Tools       ║
+# ║           9 Advanced Hacking Tools                  ║
 # ╚══════════════════════════════════════════════════════╝
 # Educational purposes only. Use at your own risk.
 #
