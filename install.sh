@@ -33,6 +33,18 @@ TOOLS=(
     "spoofx:https://github.com/AdhiHub/spoofx.git"
 )
 
+TOOL_DESC=(
+    "SQLi & XSS Scanner with 24+ payloads"
+    "Multi-service Brute-forcer (SSH/FTP/MySQL)"
+    "GitHub Dorking — secrets, keys & passwords"
+    "Cloud Misconfiguration Checker (S3, DNS)"
+    "Reverse Shell Generator (Bash/Python/PHP)"
+    "Hash Cracker (MD5/SHA1/SHA256) with auto-detect"
+    "Phishing URL Analyzer & Page Scanner"
+    "Android Payload Builder (reverse/bind/HTTPS)"
+    "ARP Spoofing & MITM Toolkit"
+)
+
 INSTALL_DIR="/opt/adhitools"
 
 # ── Functions ─────────────────────────────────────────────────────────────────
@@ -47,12 +59,15 @@ print_banner() {
     echo '   ██║  ██║██████╔╝██║  ██║██║   ██║   ╚██████╔╝╚██████╔╝███████╗'
     echo '   ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝'
     echo -e "${RESET}"
-    echo -e "${G}   ╔══════════════════════════════════════════════════════╗${RESET}"
-echo -e "${G}   ║      ${W}ALL-IN-ONE INSTALLER${G}  —  ${C}9 TOOLS${G}           ║${RESET}"
-    echo -e "${G}   ╚══════════════════════════════════════════════════════╝${RESET}"
     echo ""
-    echo -e "${D}   [!] For educational & authorized testing only${RESET}"
-    echo -e "${D}   [!] Developer assumes NO liability for misuse${RESET}"
+    echo -e "   ${W}╔═══════════════════════════════════════════╗${RESET}"
+    echo -e "   ${W}║     ${C}ADHITOOLS  —  9 TOOLS 1-CLICK SETUP${W}   ║${RESET}"
+    echo -e "   ${W}╚═══════════════════════════════════════════╝${RESET}"
+    echo ""
+    echo -e "   ${D}┃  For educational & authorized testing only${RESET}"
+    echo -e "   ${D}┃  Developer assumes NO liability for misuse${RESET}"
+    echo ""
+    echo -e "   ${Y}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
     echo ""
 }
 
@@ -60,10 +75,13 @@ print_tool_banner() {
     local name="$1"
     local num="$2"
     local total="$3"
+    local desc="$4"
     echo ""
-    echo -e "${M}   ═══════════════════════════════════════════${RESET}"
-    echo -e "${M}   [${Y}$num/${total}${M}] Installing: ${C}$name${RESET}"
-    echo -e "${M}   ═══════════════════════════════════════════${RESET}"
+    echo -e "   ${W}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${RESET}"
+    printf "   ${W}┃  ${G}STEP %s/%s${W}  ─  ${C}%-20s${W}┃\n" "$num" "$total" "$name"
+    echo -e "   ${W}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${RESET}"
+    [ -n "$desc" ] && echo -e "   ${D}${desc}${RESET}"
+    echo ""
 }
 
 print_usage() {
@@ -116,12 +134,12 @@ install_tool() {
 
     # Clean previous clone if exists
     if [ -d "$dir" ]; then
-        echo -e "${Y}[~] Updating $name...${RESET}"
+        echo -e "   ${Y}⟳ Updating $name...${RESET}"
         cd "$dir" && $SUDO git pull --ff-only 2>&1 || true
     else
-        echo -e "${C}[*] Cloning $name...${RESET}"
+        echo -e "   ${C}⬇ Cloning $name...${RESET}"
         $SUDO git clone --depth 1 "$url" "$dir" 2>&1 || {
-            echo -e "${R}[✘] Failed to clone $name${RESET}"
+            echo -e "   ${R}✘ Failed to clone $name${RESET}"
             return 1
         }
     fi
@@ -130,17 +148,15 @@ install_tool() {
     # Run tool-specific installer
     local installed=false
 
-    # Check if install.sh exists
     if [ -f "$dir/install.sh" ]; then
-        echo -e "${C}[*] Running installer for $name...${RESET}"
+        echo -e "   ${C}⚙ Running installer...${RESET}"
         cd "$dir"
         bash install.sh 2>&1 && installed=true
     elif [ -f "$dir/install.py" ]; then
-        echo -e "${C}[*] Running installer for $name...${RESET}"
+        echo -e "   ${C}⚙ Running installer...${RESET}"
         cd "$dir"
         $SUDO python3 install.py 2>&1 && installed=true
     else
-        # Just create symlink to the script
         local script=""
         for s in "$name.sh" "$name.py" "main.sh" "main.py" "tool.sh" "tool.py"; do
             [ -f "$dir/$s" ] && script="$dir/$s" && break
@@ -151,10 +167,9 @@ install_tool() {
     fi
 
     if [ "$installed" = true ]; then
-        echo -e "${G}[✔] $name installed successfully${RESET}"
+        echo -e "   ${G}✔ $name installed successfully${RESET}"
     else
-        echo -e "${Y}[!] $name: manual install may be needed${RESET}"
-        echo -e "${D}    Files at: $dir${RESET}"
+        echo -e "   ${Y}⚠ $name: manual install may be needed${RESET}"
     fi
 }
 
@@ -200,10 +215,10 @@ echo -e "${G}[✔] All prerequisites met${RESET}"
 $SUDO mkdir -p "$INSTALL_DIR"
 
 echo ""
-echo -e "${G}   ┌─────────────────────────────────────────────────────┐${RESET}"
-echo -e "${G}   │  ${W}Starting installation of ${C}9 tools${G}                       │${RESET}"
-echo -e "${G}   │  ${D}This may take a few minutes...${G}                       │${RESET}"
-echo -e "${G}   └─────────────────────────────────────────────────────┘${RESET}"
+echo -e "   ${W}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo -e "   ${W}┃  ${G}Installing 9 tools...${W}                       ┃${RESET}"
+echo -e "   ${W}┃  ${D}This may take a few minutes${W}                 ┃${RESET}"
+echo -e "   ${W}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
 
 total="${#TOOLS[@]}"
@@ -215,7 +230,7 @@ for i in "${!TOOLS[@]}"; do
     name="${entry%%:*}"
     url="${entry#*:}"
 
-    print_tool_banner "$name" $((i+1)) "$total"
+    print_tool_banner "$name" $((i+1)) "$total" "$TOOL_DESC[$i]"
 
     if install_tool "$name" "$url"; then
         ((success++))
@@ -227,25 +242,23 @@ done
 
 # Summary
 echo ""
-echo -e "${G}   ╔══════════════════════════════════════════════════════╗${RESET}"
-echo -e "${G}   ║${W}               INSTALLATION COMPLETE                 ${G}║${RESET}"
-echo -e "${G}   ╠══════════════════════════════════════════════════════╣${RESET}"
-printf "${G}   ║  ${W}Total tools:${G}  %-38d║${RESET}\n" "$total"
-printf "${G}   ║  ${G}Successful:${G} %-38d║${RESET}\n" "$success"
-printf "${G}   ║  ${R}Failed:${G}     %-38d║${RESET}\n" "$failed"
-echo -e "${G}   ╠══════════════════════════════════════════════════════╣${RESET}"
-echo -e "${G}   ║                                                       ║${RESET}"
-echo -e "${G}   ║  ${C}  injectx${RESET}     ${D}— SQLi & XSS Scanner${G}                ║${RESET}"
-echo -e "${G}   ║  ${C}  brutex${RESET}      ${D}— Multi-service Brute-forcer${G}         ║${RESET}"
-echo -e "${G}   ║  ${C}  gitraider${RESET}   ${D}— GitHub Dorking Tool${G}               ║${RESET}"
-echo -e "${G}   ║  ${C}  cloudraider${RESET} ${D}— Cloud Misconfiguration Checker${G}    ║${RESET}"
-echo -e "${G}   ║  ${C}  reversex${RESET}    ${D}— Reverse Shell Generator${G}           ║${RESET}"
-echo -e "${G}   ║  ${C}  crackstation${RESET} ${D}— Hash Cracker${G}                     ║${RESET}"
-echo -e "${G}   ║  ${C}  phishnet${RESET}     ${D}— Phishing URL Analyzer${G}             ║${RESET}"
-echo -e "${G}   ║  ${C}  droidx${RESET}      ${D}— Android Payload Builder${G}           ║${RESET}"
-echo -e "${G}   ║  ${C}  spoofx${RESET}       ${D}— ARP Spoofing & MITM Toolkit${G}      ║${RESET}"
-echo -e "${G}   ╠══════════════════════════════════════════════════════╣${RESET}"
-echo -e "${G}   ║                                                     ║${RESET}"
-echo -e "${G}   ║  ${D}Type any tool name in terminal to launch it${G}    ║${RESET}"
-echo -e "${G}   ╚══════════════════════════════════════════════════════╝${RESET}"
+echo -e "   ${W}╔═══════════════════════════════════════════╗${RESET}"
+echo -e "   ${W}║${G}         INSTALLATION COMPLETE            ${W}║${RESET}"
+echo -e "   ${W}╠═══════════════════════════════════════════╣${RESET}"
+printf "   ${W}║${G}  ✔ Successful:${W}  %-30d║${RESET}\n" "$success"
+printf "   ${W}║${R}  ✘ Failed:${W}      %-30d║${RESET}\n" "$failed"
+echo -e "   ${W}╠═══════════════════════════════════════════╣${RESET}"
+echo -e "   ${W}║${C}  injectx      ${D}SQLi & XSS Scanner${W}         ║${RESET}"
+echo -e "   ${W}║${C}  brutex       ${D}Multi-service Brute-forcer${W}  ║${RESET}"
+echo -e "   ${W}║${C}  gitraider    ${D}GitHub Dorking${W}              ║${RESET}"
+echo -e "   ${W}║${C}  cloudraider  ${D}Cloud Checker${W}               ║${RESET}"
+echo -e "   ${W}║${C}  reversex     ${D}Reverse Shell Generator${W}     ║${RESET}"
+echo -e "   ${W}║${C}  crackstation ${D}Hash Cracker${W}                ║${RESET}"
+echo -e "   ${W}║${C}  phishnet     ${D}Phishing URL Analyzer${W}       ║${RESET}"
+echo -e "   ${W}║${C}  droidx       ${D}Android Payload Builder${W}     ║${RESET}"
+echo -e "   ${W}║${C}  spoofx       ${D}ARP Spoofing & MITM${W}         ║${RESET}"
+echo -e "   ${W}╠═══════════════════════════════════════════╣${RESET}"
+echo -e "   ${W}║${D}  Type any tool name in terminal       ${W}║${RESET}"
+echo -e "   ${W}║${D}  to launch it                         ${W}║${RESET}"
+echo -e "   ${W}╚═══════════════════════════════════════════╝${RESET}"
 echo ""
