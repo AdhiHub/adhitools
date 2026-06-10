@@ -22,7 +22,6 @@ fi
 
 # ── Tools list ────────────────────────────────────────────────────────────────
 TOOLS=(
-    "cyber-pentools:https://github.com/AdhiHub/cyber-pentools.git"
     "injectx:https://github.com/AdhiHub/injectx.git"
     "brutex:https://github.com/AdhiHub/brutex.git"
     "gitraider:https://github.com/AdhiHub/gitraider.git"
@@ -49,8 +48,7 @@ print_banner() {
     echo '   ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝'
     echo -e "${RESET}"
     echo -e "${G}   ╔══════════════════════════════════════════════════════╗${RESET}"
-    echo -e "${G}   ║      ${W}ALL-IN-ONE INSTALLER${G}  —  ${C}10 TOOLS${G}          ║${RESET}"
-    echo -e "${G}   ║   ${Y}Cyber Pentools + 9 Advanced Security Tools${G}    ║${RESET}"
+echo -e "${G}   ║      ${W}ALL-IN-ONE INSTALLER${G}  —  ${C}9 TOOLS${G}           ║${RESET}"
     echo -e "${G}   ╚══════════════════════════════════════════════════════╝${RESET}"
     echo ""
     echo -e "${D}   [!] For educational & authorized testing only${RESET}"
@@ -135,13 +133,7 @@ install_tool() {
     if [ -f "$dir/install.sh" ]; then
         echo -e "${C}[*] Running installer for $name...${RESET}"
         cd "$dir"
-        if [ "$name" = "cyber-pentools" ]; then
-            # Special handling: install rich first, then run install.py
-            $SUDO pip3 install rich --quiet 2>/dev/null || true
-            $SUDO python3 install.py 2>/dev/null && installed=true
-        else
-            bash install.sh 2>/dev/null && installed=true
-        fi
+        bash install.sh 2>/dev/null && installed=true
     elif [ -f "$dir/install.py" ]; then
         echo -e "${C}[*] Running installer for $name...${RESET}"
         cd "$dir"
@@ -194,7 +186,7 @@ print_banner
 
 # Check prerequisites
 echo -e "${C}[*] Checking prerequisites...${RESET}"
-for cmd in git curl python3; do
+for cmd in git curl; do
     if ! command -v "$cmd" &>/dev/null; then
         echo -e "${R}[!] $cmd is required but not installed${RESET}"
         echo -e "${Y}[*] Install with: sudo apt install $cmd${RESET}"
@@ -208,7 +200,7 @@ $SUDO mkdir -p "$INSTALL_DIR"
 
 echo ""
 echo -e "${G}   ┌─────────────────────────────────────────────────────┐${RESET}"
-echo -e "${G}   │  ${W}Starting installation of ${C}10 tools${G}                      │${RESET}"
+echo -e "${G}   │  ${W}Starting installation of ${C}9 tools${G}                       │${RESET}"
 echo -e "${G}   │  ${D}This may take a few minutes...${G}                       │${RESET}"
 echo -e "${G}   └─────────────────────────────────────────────────────┘${RESET}"
 echo ""
@@ -242,16 +234,15 @@ printf "${G}   ║  ${G}Successful:${G} %-38d║${RESET}\n" "$success"
 printf "${G}   ║  ${R}Failed:${G}     %-38d║${RESET}\n" "$failed"
 echo -e "${G}   ╠══════════════════════════════════════════════════════╣${RESET}"
 echo -e "${G}   ║                                                       ║${RESET}"
-echo -e "${G}   ║  ${C}  pentools${RESET}  ${D}— Launch Cyber Pentools${G}              ║${RESET}"
-echo -e "${G}   ║  ${C}  injectx${RESET}   ${D}— SQLi & XSS Scanner${G}               ║${RESET}"
-echo -e "${G}   ║  ${C}  brutex${RESET}    ${D}— Multi-service Brute-forcer${G}        ║${RESET}"
-echo -e "${G}   ║  ${C}  gitraider${RESET} ${D}— GitHub Dorking Tool${G}              ║${RESET}"
-echo -e "${G}   ║  ${C}  cloudraider${RESET}${D}— Cloud Misconfiguration Checker${G}   ║${RESET}"
-echo -e "${G}   ║  ${C}  reversex${RESET}  ${D}— Reverse Shell Generator${G}          ║${RESET}"
-echo -e "${G}   ║  ${C}  crackstation${RESET}${D}— Hash Cracker${G}                    ║${RESET}"
-echo -e "${G}   ║  ${C}  phishnet${RESET}   ${D}— Phishing URL Analyzer${G}            ║${RESET}"
-echo -e "${G}   ║  ${C}  droidx${RESET}    ${D}— Android Payload Builder${G}          ║${RESET}"
-echo -e "${G}   ║  ${C}  spoofx${RESET}     ${D}— ARP Spoofing & MITM Toolkit${G}     ║${RESET}"
+echo -e "${G}   ║  ${C}  injectx${RESET}     ${D}— SQLi & XSS Scanner${G}                ║${RESET}"
+echo -e "${G}   ║  ${C}  brutex${RESET}      ${D}— Multi-service Brute-forcer${G}         ║${RESET}"
+echo -e "${G}   ║  ${C}  gitraider${RESET}   ${D}— GitHub Dorking Tool${G}               ║${RESET}"
+echo -e "${G}   ║  ${C}  cloudraider${RESET} ${D}— Cloud Misconfiguration Checker${G}    ║${RESET}"
+echo -e "${G}   ║  ${C}  reversex${RESET}    ${D}— Reverse Shell Generator${G}           ║${RESET}"
+echo -e "${G}   ║  ${C}  crackstation${RESET} ${D}— Hash Cracker${G}                     ║${RESET}"
+echo -e "${G}   ║  ${C}  phishnet${RESET}     ${D}— Phishing URL Analyzer${G}             ║${RESET}"
+echo -e "${G}   ║  ${C}  droidx${RESET}      ${D}— Android Payload Builder${G}           ║${RESET}"
+echo -e "${G}   ║  ${C}  spoofx${RESET}       ${D}— ARP Spoofing & MITM Toolkit${G}      ║${RESET}"
 echo -e "${G}   ╠══════════════════════════════════════════════════════╣${RESET}"
 echo -e "${G}   ║                                                     ║${RESET}"
 echo -e "${G}   ║  ${D}Type any tool name in terminal to launch it${G}    ║${RESET}"

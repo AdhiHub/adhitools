@@ -1,10 +1,10 @@
 # ADHITOOLS — All-in-One Security Toolkit
 
-![Tools](https://img.shields.io/badge/tools-10-blue)
+![Tools](https://img.shields.io/badge/tools-9-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-Linux-lightgrey)
 
-**10 hacking tools | 1 command | Instant setup**
+**9 advanced hacking tools | 1 command | Instant setup**
 
 ---
 
@@ -18,23 +18,21 @@ curl -fsSL https://raw.githubusercontent.com/AdhiHub/adhitools/main/install.sh |
 
 | #  | Tool        | Description                           | Repo                                                      |
 |----|-------------|---------------------------------------|-----------------------------------------------------------|
-| 1  | pentools    | All-in-One pentesting toolkit (240+ tools) | [AdhiHub/cyber-pentools](https://github.com/AdhiHub/cyber-pentools) |
-| 2  | injectx     | SQLi & XSS scanner with 24+ payloads  | [AdhiHub/injectx](https://github.com/AdhiHub/injectx)     |
-| 3  | brutex      | Multi-service brute-forcer (SSH/FTP/MySQL/SMTP) | [AdhiHub/brutex](https://github.com/AdhiHub/brutex)       |
-| 4  | gitraider   | GitHub dorking — secrets, keys, passwords | [AdhiHub/gitraider](https://github.com/AdhiHub/gitraider) |
-| 5  | cloudraider | Cloud misconfiguration checker (S3, DNS) | [AdhiHub/cloudraider](https://github.com/AdhiHub/cloudraider) |
-| 6  | reversex    | Reverse shell generator (Bash/Python/PHP/Netcat) | [AdhiHub/reversex](https://github.com/AdhiHub/reversex)   |
-| 7  | crackstation| Hash cracker (MD5/SHA1/SHA256) with auto-detect | [AdhiHub/crackstation](https://github.com/AdhiHub/crackstation) |
-| 8  | phishnet    | Phishing URL analyzer & page scanner   | [AdhiHub/phishnet](https://github.com/AdhiHub/phishnet)   |
-| 9  | droidx      | Android payload builder (reverse/bind/HTTPS) | [AdhiHub/droidx](https://github.com/AdhiHub/droidx)       |
-| 10 | spoofx      | ARP spoofing & MITM toolkit            | [AdhiHub/spoofx](https://github.com/AdhiHub/spoofx)       |
+| 1  | injectx     | SQLi & XSS scanner with 24+ payloads  | [AdhiHub/injectx](https://github.com/AdhiHub/injectx)     |
+| 2  | brutex      | Multi-service brute-forcer (SSH/FTP/MySQL/SMTP) | [AdhiHub/brutex](https://github.com/AdhiHub/brutex)       |
+| 3  | gitraider   | GitHub dorking — secrets, keys, passwords | [AdhiHub/gitraider](https://github.com/AdhiHub/gitraider) |
+| 4  | cloudraider | Cloud misconfiguration checker (S3, DNS) | [AdhiHub/cloudraider](https://github.com/AdhiHub/cloudraider) |
+| 5  | reversex    | Reverse shell generator (Bash/Python/PHP/Netcat) | [AdhiHub/reversex](https://github.com/AdhiHub/reversex)   |
+| 6  | crackstation| Hash cracker (MD5/SHA1/SHA256) with auto-detect | [AdhiHub/crackstation](https://github.com/AdhiHub/crackstation) |
+| 7  | phishnet    | Phishing URL analyzer & page scanner   | [AdhiHub/phishnet](https://github.com/AdhiHub/phishnet)   |
+| 8  | droidx      | Android payload builder (reverse/bind/HTTPS) | [AdhiHub/droidx](https://github.com/AdhiHub/droidx)       |
+| 9  | spoofx      | ARP spoofing & MITM toolkit            | [AdhiHub/spoofx](https://github.com/AdhiHub/spoofx)       |
 
 ## Usage
 
 After install, type any tool name in your terminal:
 
 ```bash
-pentools      # Cyber Pentools main menu
 injectx       # SQLi & XSS scanner
 brutex        # Multi-service brute-forcer
 gitraider     # GitHub dorking
@@ -51,14 +49,13 @@ spoofx        # ARP spoofing toolkit
 Install just one tool:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/AdhiHub/adhitools/main/install.sh | bash -s -- --tool pentools
+curl -fsSL https://raw.githubusercontent.com/AdhiHub/adhitools/main/install.sh | bash -s -- --tool brutex
 ```
 
 ## Requirements
 
 - **OS:** Linux
-- **Python:** 3.10+
-- **Packages:** git, curl, python3-pip
+- **Packages:** git, curl
 
 ## Legal Disclaimer
 
