@@ -84,6 +84,20 @@ print_tool_banner() {
     echo ""
 }
 
+list_tools_ordered() {
+    echo ""
+    echo -e "   ${W}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+    echo -e "   ${W}┃  ${G}Tools to install:${W}                       ┃${RESET}"
+    echo -e "   ${W}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+    for i in "${!TOOLS[@]}"; do
+        name="${TOOLS[$i]%%:*}"
+        desc="${TOOL_DESC[$i]}"
+        printf "   ${W}┃  ${C}%2d.${G} %-13s ${D}%s${W}┃\n" $((i+1)) "$name" "$desc"
+    done
+    echo -e "   ${W}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+    echo ""
+}
+
 print_usage() {
     echo ""
     echo -e "${Y}   Usage:${RESET}"
@@ -215,10 +229,11 @@ echo -e "${G}[✔] All prerequisites met${RESET}"
 $SUDO mkdir -p "$INSTALL_DIR"
 
 echo ""
-echo -e "   ${W}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
-echo -e "   ${W}┃  ${G}Installing 9 tools...${W}                       ┃${RESET}"
-echo -e "   ${W}┃  ${D}This may take a few minutes${W}                 ┃${RESET}"
-echo -e "   ${W}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+list_tools_ordered
+
+echo -e "   ${Y}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo -e "   ${Y}┃  ${W}Starting installation...${Y}                         ┃${RESET}"
+echo -e "   ${Y}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 echo ""
 
 total="${#TOOLS[@]}"
