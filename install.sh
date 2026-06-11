@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
 # ╔══════════════════════════════════════════════════════╗
-# ║       ADHITOOLS — All-in-One Installer v1.0         ║
-# ║           9 Advanced Hacking Tools                  ║
+# ║       ADHITOOLS — All-in-One Installer v1.1         ║
+# ║           10 Advanced Hacking Tools                 ║
 # ╚══════════════════════════════════════════════════════╝
 # Educational purposes only. Use at your own risk.
 #
@@ -31,6 +31,8 @@ TOOLS=(
     "phishnet:https://github.com/AdhiHub/phishnet.git"
     "droidx:https://github.com/AdhiHub/droidx.git"
     "spoofx:https://github.com/AdhiHub/spoofx.git"
+    "ripx:https://github.com/AdhiHub/RipX.git"
+    "wifix:https://github.com/AdhiHub/WiFiX.git"
 )
 
 TOOL_DESC=(
@@ -43,6 +45,8 @@ TOOL_DESC=(
     "Phishing URL Analyzer & Page Scanner"
     "Android Payload Builder (reverse/bind/HTTPS)"
     "ARP Spoofing & MITM Toolkit"
+    "DDoS Stress Tool (HTTP/TCP flood)"
+    "WiFi Auditor — Scan, handshake, deauth detection"
 )
 
 INSTALL_DIR="/opt/adhitools"
@@ -61,7 +65,7 @@ print_banner() {
     echo -e "${RESET}"
     echo ""
     echo -e "   ${W}╔═══════════════════════════════════════════╗${RESET}"
-    echo -e "   ${W}║     ${C}ADHITOOLS  —  9 TOOLS 1-CLICK SETUP${W}   ║${RESET}"
+    echo -e "   ${W}║     ${C}ADHITOOLS  —  11 TOOLS 1-CLICK SETUP${W}   ║${RESET}"
     echo -e "   ${W}╚═══════════════════════════════════════════╝${RESET}"
     echo ""
     echo -e "   ${D}┃  For educational & authorized testing only${RESET}"
@@ -272,6 +276,8 @@ echo -e "   ${W}║${C}  crackstation ${D}Hash Cracker${W}                ║${R
 echo -e "   ${W}║${C}  phishnet     ${D}Phishing URL Analyzer${W}       ║${RESET}"
 echo -e "   ${W}║${C}  droidx       ${D}Android Payload Builder${W}     ║${RESET}"
 echo -e "   ${W}║${C}  spoofx       ${D}ARP Spoofing & MITM${W}         ║${RESET}"
+echo -e "   ${W}║${C}  ripx         ${D}DDoS Stress Tool${W}              ║${RESET}"
+echo -e "   ${W}║${C}  wifix        ${D}WiFi Auditor Toolkit${W}         ║${RESET}"
 echo -e "   ${W}╠═══════════════════════════════════════════╣${RESET}"
 echo -e "   ${W}║${D}  Type any tool name in terminal       ${W}║${RESET}"
 echo -e "   ${W}║${D}  to launch it                         ${W}║${RESET}"

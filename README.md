@@ -1,10 +1,10 @@
 # ADHITOOLS — All-in-One Security Toolkit
 
-![Tools](https://img.shields.io/badge/tools-9-blue)
+![Tools](https://img.shields.io/badge/tools-11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-Linux-lightgrey)
 
-**9 advanced hacking tools | 1 command | Instant setup**
+**11 advanced hacking tools | 1 command | Instant setup**
 
 ---
 
@@ -27,6 +27,8 @@ curl -fsSL https://raw.githubusercontent.com/AdhiHub/adhitools/main/install.sh |
 | 7  | phishnet    | Phishing URL analyzer & page scanner   | [AdhiHub/phishnet](https://github.com/AdhiHub/phishnet)   |
 | 8  | droidx      | Android payload builder (reverse/bind/HTTPS) | [AdhiHub/droidx](https://github.com/AdhiHub/droidx)       |
 | 9  | spoofx      | ARP spoofing & MITM toolkit            | [AdhiHub/spoofx](https://github.com/AdhiHub/spoofx)       |
+| 10 | ripx        | DDoS stress tool (HTTP/TCP flood)      | [AdhiHub/RipX](https://github.com/AdhiHub/RipX)           |
+| 11 | wifix       | WiFi auditor — scan, handshake, deauth | [AdhiHub/WiFiX](https://github.com/AdhiHub/WiFiX)         |
 
 ## Usage
 
@@ -42,6 +44,8 @@ crackstation  # Hash cracker
 phishnet      # Phishing URL analyzer
 droidx        # Android payload builder
 spoofx        # ARP spoofing toolkit
+ripx          # DDoS stress tool
+wifix         # WiFi auditor toolkit
 ```
 
 ## Single Tool Install
