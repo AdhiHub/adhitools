@@ -22,7 +22,7 @@ curl -fsSL https://raw.githubusercontent.com/AdhiHub/adhitools/main/install.sh |
 | 2  | brutex      | Multi-service brute-forcer (SSH/FTP/MySQL/SMTP) | [AdhiHub/brutex](https://github.com/AdhiHub/brutex)       |
 | 3  | gitraider   | GitHub dorking — secrets, keys, passwords | [AdhiHub/gitraider](https://github.com/AdhiHub/gitraider) |
 | 4  | cloudraider | Cloud misconfiguration checker (S3, DNS) | [AdhiHub/cloudraider](https://github.com/AdhiHub/cloudraider) |
-| 5  | reversex    | Reverse shell generator (Bash/Python/PHP/Netcat) | [AdhiHub/reversex](https://github.com/AdhiHub/reversex)   |
+| 5  | shellx      | Shell & payload generator (Bash/Python/PHP/Netcat) | [AdhiHub/ShellX](https://github.com/AdhiHub/ShellX)   |
 | 6  | crackstation| Hash cracker (MD5/SHA1/SHA256) with auto-detect | [AdhiHub/crackstation](https://github.com/AdhiHub/crackstation) |
 | 7  | phishnet    | Phishing URL analyzer & page scanner   | [AdhiHub/phishnet](https://github.com/AdhiHub/phishnet)   |
 | 8  | droidx      | Android payload builder (reverse/bind/HTTPS) | [AdhiHub/droidx](https://github.com/AdhiHub/droidx)       |
@@ -37,7 +37,7 @@ injectx       # SQLi & XSS scanner
 brutex        # Multi-service brute-forcer
 gitraider     # GitHub dorking
 cloudraider   # Cloud checker
-reversex      # Reverse shell generator
+shellx        # Shell & payload generator
 crackstation  # Hash cracker
 phishnet      # Phishing URL analyzer
 droidx        # Android payload builder
